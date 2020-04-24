@@ -2,20 +2,24 @@
 // .cpp files all lower case
 
 // default group format for all classes:
+
 class className
 {
   public:
-    // default constructor, parameterized constuctor, copy constructor, destructor
+    // constructors and destructor
     Classname();
     Classname(var, var);
     Classname(const Classname& orig)
     ~Classname();
+    
     // accessors:
     int getVar();
     int getVar();
-    // settors/modifiers:
+    
+    // setters/modifiers:
     void setVar(varType);
     void setVar(varType);
+    
     // other functions:
     void otherFunction01();
     void otherFunction02();
@@ -25,34 +29,36 @@ class className
     // other Variables:
 };
 
-    // default constructor, parameterized constuctor, copy constructor, destructor
-    Classname()
+    // constructors and destructor
+    Classname::Classname()
     {
     
     }
-    Classname(var, var)
+    Classname::Classname(var, var)
     {
     
     }
-    Classname(const Classname& orig)
+    Classname::Classname(const Classname& orig)
     {
     
     }
-    ~Classname()
+    Classname::~Classname()
     {
     
     }
+    
     // accessors:
-    int getVar()
+    int Classname::getVar()
     {
     
     }
-    int getVar()
+    int Classname::getVar()
     {
     
     }
+    
     // settors/modifiers:
-    void setVar(varType)
+    void Classname::setVar(varType)
     {
     
     }
@@ -60,12 +66,13 @@ class className
     {
     
     }
+    
     // other functions:
-    void otherFunction01()
+    void Classname::otherFunction01()
     {
     
     }
-    void otherFunction02()
+    void Classname::otherFunction02()
     {
     
     }
