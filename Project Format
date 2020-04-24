@@ -1,0 +1,71 @@
+// first letter of header files is capitalized
+// .cpp files all lower case
+
+// default group format for all classes:
+class className
+{
+  public:
+    // default constructor, parameterized constuctor, copy constructor, destructor
+    Classname();
+    Classname(var, var);
+    Classname(const Classname& orig)
+    ~Classname();
+    // accessors:
+    int getVar();
+    int getVar();
+    // settors/modifiers:
+    void setVar(varType);
+    void setVar(varType);
+    // other functions:
+    void otherFunction01();
+    void otherFunction02();
+    
+  Protected:
+    // static Variable:
+    // other Variables:
+};
+
+    // default constructor, parameterized constuctor, copy constructor, destructor
+    Classname()
+    {
+    
+    }
+    Classname(var, var)
+    {
+    
+    }
+    Classname(const Classname& orig)
+    {
+    
+    }
+    ~Classname()
+    {
+    
+    }
+    // accessors:
+    int getVar()
+    {
+    
+    }
+    int getVar()
+    {
+    
+    }
+    // settors/modifiers:
+    void setVar(varType)
+    {
+    
+    }
+    void setVar(varType)
+    {
+    
+    }
+    // other functions:
+    void otherFunction01()
+    {
+    
+    }
+    void otherFunction02()
+    {
+    
+    }
