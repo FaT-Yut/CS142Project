@@ -1,0 +1,238 @@
+Medical Clinic Management Program
+
+GOAL: Develop a basic information system for a small clinic
+
+// first letter of header files is capitalized
+// .cpp files all lower case
+
+// default group format for all classes:
+class className
+{
+  public:
+    // default constructor, parameterized constuctor, copy constructor, destructor
+    Classname();
+    Classname(var, var);
+    Classname(const Classname& orig)
+    ~Classname();
+    // accessors:
+    int getVar();
+    int getVar();
+    // settors/modifiers:
+    void setVar(varType);
+    void setVar(varType);
+    // other functions:
+    void otherFunction01();
+    void otherFunction02();
+    
+  Protected:
+    // static Variable:
+    // other Variables:
+};
+
+    // default constructor, parameterized constuctor, copy constructor, destructor
+    Classname()
+    {
+    
+    }
+    Classname(var, var)
+    {
+    
+    }
+    Classname(const Classname& orig)
+    {
+    
+    }
+    ~Classname()
+    {
+    
+    }
+    // accessors:
+    int getVar()
+    {
+    
+    }
+    int getVar()
+    {
+    
+    }
+    // settors/modifiers:
+    void setVar(varType)
+    {
+    
+    }
+    void setVar(varType)
+    {
+    
+    }
+    // other functions:
+    void otherFunction01()
+    {
+    
+    }
+    void otherFunction02()
+    {
+    
+    }
+
+Main:
+int main()
+{
+2 doctors, unknown number of nurses and patients.
+Doc01 is Joanne Healthy 
+Doc02 is Johnny Hefty
+
+Starts with two options displayed
+1. Create a new clinic (using the default constructors)
+2. Load existing data and modify (parameterized constructors and ifstream/ofstream of data from a text file)
+  // If 2. is selected and the file is empty or if it does not exist, that means that we should build the clinic from scratch. 
+
+
+}
+
+Class Person // Parent class
+{
+  
+  * minimum functions: 
+  * minimum variables: fName, lName, stAddress, zipCode, city, dayBirth, monthBirth, yearBirth, SSN, gender 
+  * extra functions: (if necessary)
+  * extra variables: (if necessary)
+}
+
+Class Patient // child class of Person
+{
+  
+  // Each patient has a Doctor
+  // Patients have own static int for ID
+  
+  * minimum functions: 
+  * minimum variables: idPatient, allergy (bool), prescriptions (array of strings). 
+  * extra functions: (if necessary)
+  * extra variables: (if necessary)
+};
+
+Class Employee // child class of Person
+{
+  
+  
+  
+  * minimum functions: 
+  * minimum variables: salary 
+  * extra functions: (if necessary)
+  * extra variables: (if necessary)
+}
+
+Class Nurse // child class of Employee
+{           // association relationship with Doctor
+  
+  // All nurses work for both doctors
+  // Nurses have own static int for ID
+  
+  * minimum functions: 
+  * minimum variables: Specialty, practitioner (bool), nbNurses, idNurse. 
+  * extra functions: (if necessary)
+  * extra variables: (if necessary)
+ };
+ 
+Class Doctor // child class of Employee
+{            // association relationship with Nurse
+
+  
+  // Only 2 Docs will be created in the main
+  // All nurses work for both doctors
+  // Doctors have own static int for ID
+  
+  * minimum functions: 
+  - addPatient() // adds a new patient to the array of the doctor’s patient.
+  
+  - addAppointment(idPatient, hour, day, month, year, idNurse) // adds a new appointment to
+  // the schedule of the doctor. You may assume that the doctor gives appointments for the five
+  // coming working days. For every day, there are eight time-slots with one-hour break
+  // between 12-1PM. You should display an error message if you are trying to add a new
+  // appointment in an already taken time slot. Obviously, your scheduling array should be a
+  // 2D array. You should also check that the nurse is not involved in another appointment with
+  // the other doctor in the same time. This means that you should take the object of the other
+  // doctor as a parameter, as well, to be able to access his schedule through the checkNurse
+  // function. 
+  
+  - cancelAppointment(idPatient) // cancels an appointment from the schedule of the doctor.
+  
+  - deleteAppointment(idPatient, hour, day, month, year) // replaces the existing time variables
+   // with the newly provided ones. 
+
+  - addNurse() // this function calls the constructor of nurse with all the necessary parameters. It
+  // creates a new nurse and increments the number of nurses in the clinic.
+  
+  - delNurse(nurseObject) // it removes the object nurse and decrements the number of nurses in
+  // the clinic. Removing an object from an array is done by displacing the items after it one
+  // after the other tile the last object in the array. This function calls then the destructor of
+  // nurse given as a parameter. 
+  
+  - checkNurse(idNurse, hour, day, month, year, idNurse) returns boolean to indicate if a nurse
+  // has an appointment in the given time parameters.
+  
+  * minimum variables: idDoctor, speciality, degree, medicalSchool, boardCertified (bool), patients (dynamic array), 
+    appointments (dynamic array). 
+  * extra functions: (if necessary)
+  * extra variables:  static Nurses (dynamic array or Vector) // static Nurse** allNurses_;
+                                                              // this way both doctors would have access to the list without
+                                                              // having to create two lists and any
+                                                              // time that the array of nurses needed to be changed it would
+                                                              // be this static array that is gettic changed.
+
+};
+
+
+
+Class LoadObjects // association with Person
+{                 // use polymorphism so it will have access to all child class data
+
+
+  * minimum functions: 
+  -  loadData() //  First, we should open the file clinicData.txt. This
+  // file should contain the following information:
+  // nbNurses, Dr1Capacity, Dr1NbPatients, Dr2Capcity, Dr2NbPatients. For example, if we may have
+  // a file with the following data: 3 30 25 40 29. In this case, we have three nurses, the first doctor’s
+  // capacity is 30, and he has 25 patients. If the file is empty or if it does not exist, that means that we
+  // should build the clinic from scratch.
+  // Then we should make the names of the files. For example, imagine we have three nurses. Then we
+  // should make three file names for nurses: “nu” + ”1” + ”.txt” open the file and read the information
+  // and instantiate a nurse with the right parameters then do the same with “nu”+”2”+”.txt” and
+  // “nu”+”3”+”.txt”. Obviously, we need a loop for this work.
+  // For the doctors, you may find the data in the files dr1.txt and dr2.txt. For the patients, you may
+  // generate the files as follows: dr1_pat1.txt, dr1_pat2.txt, dr1_pat3.txt, etc. In this example, Dr1 has
+  // 25 patients. For the second doctor, obviously the files should start with dr2. Based on the number
+  // of patients obtained from clinicData.txt, you need to generate the names of the files using a loop
+  // and open every file and create the object with the parametrized constructor. The doctors’ data may
+  // be retrieved in files called dr1.txt and dr2.txt. The parameters should obviously be extracted from
+  // the file. Please remember to close all the files.
+  
+  * minimum variables:  
+  * extra functions: (if necessary)
+  * extra variables: (if necessary)
+};
+// Have option of combining these two into one class
+Class StoreObjects // association with Person 
+{                  // use polymorphism so it will have access to all child class data
+
+  // This class has access to the information in the other classes and stores every object in a separate file.
+  // The names of the files should follow the rules indicated above. 
+
+  * minimum functions: 
+  * minimum variables:  
+  * extra functions: (if necessary)
+  * extra variables: (if necessary)
+};
+
+// To test that a file is empty you can use the following code:
+
+if (myfile.peek() == std::ifstream::traits_type::eof())
+ {
+ cout << "file is empty"<< endl;
+//do your processing
+ }
+ 
+// To know that a file does not exist you may use: 
+
+if(myFile.fail()) 
+or
+if(myFile.is_open.()) 
