@@ -1,5 +1,6 @@
 #include "Person.h"
 
+// constructors
 Person::Person() : fName_("John"), lName_("Doe"), stAddress_("123 Address St"), zipcode_(12345),
 	city_("City"), dayBirth_(0), monthBirth_(0), yearBirth_(0), SSN_("0"), gender_('N') {}
 
@@ -12,6 +13,7 @@ Person::Person(const Person& ogPerson) : fName_(ogPerson.fName_), lName_(ogPerso
 	stAddress_(ogPerson.stAddress_), zipcode_(ogPerson.zipcode_), city_(ogPerson.city_), dayBirth_(ogPerson.dayBirth_),
 	monthBirth_(ogPerson.monthBirth_), yearBirth_(ogPerson.yearBirth_), SSN_(ogPerson.SSN_), gender_(ogPerson.gender_) {}
 
+// accessors
 std::string Person::getFName()
 {
 	return fName_;
@@ -62,6 +64,7 @@ char Person::getGender()
 	return gender_;
 }
 
+// manipulators
 void Person::setFName(std::string fName)
 {
 	fName_ = fName;
