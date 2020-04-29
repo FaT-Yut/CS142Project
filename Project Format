@@ -62,7 +62,7 @@ class className
     {
     
     }
-    void setVar(varType)
+    void Classname::setVar(varType)
     {
     
     }
