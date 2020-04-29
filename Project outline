@@ -7,72 +7,79 @@ Main:
 int main()
 {
 2 doctors, unknown number of nurses and patients.
-Doc01 is Joanne Healthy 
+Doc01 is Joanne Healthy
 Doc02 is Johnny Hefty
 
 Starts with two options displayed
 1. Create a new clinic (using the default constructors)
 2. Load existing data and modify (parameterized constructors and ifstream/ofstream of data from a text file)
-  // If 2. is selected and the file is empty or if it does not exist, that means that we should build the clinic from scratch. 
+  // If 2. is selected and the file is empty or if it does not exist, that means that we should build the clinic from scratch.
+  // use the peak function at the bottom of this to check if it's empty.
+
+*user interface shows what all the program can do
+-option for adding and deleting Patients and Nurses
+-options that show off scheduling features
+-options to save and load data
+-maybe an option to display all upcoming appointments
 
 
 }
 
 Class Person // Parent class
 {
-  
-  * minimum functions: 
-  * minimum variables: fName, lName, stAddress, zipCode, city, dayBirth, monthBirth, yearBirth, SSN, gender 
+
+  * minimum functions:
+  * minimum variables: fName, lName, stAddress, zipCode, city, dayBirth, monthBirth, yearBirth, SSN, gender
   * extra functions: (if necessary)
   * extra variables: (if necessary)
 }
 
 Class Patient // child class of Person
 {
-  
+
   // Each patient has a Doctor
   // Patients have own static int for ID
-  
-  * minimum functions: 
-  * minimum variables: idPatient, allergy (bool), prescriptions (array of strings). 
+
+  * minimum functions:
+  * minimum variables: idPatient, allergy (bool), prescriptions (array of strings).
   * extra functions: (if necessary)
-  * extra variables: (if necessary)
+  * extra variables: number of prescriptions, Doctor*
 };
 
 Class Employee // child class of Person
 {
-  
-  
-  
-  * minimum functions: 
-  * minimum variables: salary 
+
+
+
+  * minimum functions:
+  * minimum variables: salary
   * extra functions: (if necessary)
   * extra variables: (if necessary)
 }
 
 Class Nurse // child class of Employee
 {           // association relationship with Doctor
-  
+
   // All nurses work for both doctors
   // Nurses have own static int for ID
-  
-  * minimum functions: 
-  * minimum variables: Specialty, practitioner (bool), nbNurses, idNurse. 
+
+  * minimum functions:
+  * minimum variables: Specialty, practitioner (bool), nbNurses, idNurse.
   * extra functions: (if necessary)
   * extra variables: (if necessary)
  };
- 
+
 Class Doctor // child class of Employee
 {            // association relationship with Nurse
 
-  
+
   // Only 2 Docs will be created in the main
   // All nurses work for both doctors
   // Doctors have own static int for ID
-  
-  * minimum functions: 
+
+  * minimum functions:
   - addPatient() // adds a new patient to the array of the doctor’s patient.
-  
+
   - addAppointment(idPatient, hour, day, month, year, idNurse) // adds a new appointment to
   // the schedule of the doctor. You may assume that the doctor gives appointments for the five
   // coming working days. For every day, there are eight time-slots with one-hour break
@@ -81,42 +88,51 @@ Class Doctor // child class of Employee
   // 2D array. You should also check that the nurse is not involved in another appointment with
   // the other doctor in the same time. This means that you should take the object of the other
   // doctor as a parameter, as well, to be able to access his schedule through the checkNurse
-  // function. 
-  
-  - cancelAppointment(idPatient) // cancels an appointment from the schedule of the doctor.
-  
-  - deleteAppointment(idPatient, hour, day, month, year) // replaces the existing time variables
-   // with the newly provided ones. 
+  // function.
 
-  - addNurse() // this function calls the constructor of nurse with all the necessary parameters. It
-  // creates a new nurse and increments the number of nurses in the clinic.
-  
-  - delNurse(nurseObject) // it removes the object nurse and decrements the number of nurses in
-  // the clinic. Removing an object from an array is done by displacing the items after it one
-  // after the other tile the last object in the array. This function calls then the destructor of
-  // nurse given as a parameter. 
-  
-  - checkNurse(idNurse, hour, day, month, year, idNurse) returns boolean to indicate if a nurse
-  // has an appointment in the given time parameters.
-  
-  * minimum variables: idDoctor, speciality, degree, medicalSchool, boardCertified (bool), patients (dynamic array), 
-    appointments (dynamic array). 
+  - cancelAppointment(idPatient) // cancels an appointment from the schedule of the doctor.
+
+  - deleteAppointment(idPatient, hour, day, month, year) // replaces the existing time variables
+   // with the newly provided ones.
+
+
+
+  * minimum variables: idDoctor, speciality, degree, medicalSchool, boardCertified (bool), patients (dynamic array),
+    appointments (dynamic array).
   * extra functions: (if necessary)
-  * extra variables:  static Nurses (dynamic array or Vector) // static Nurse** allNurses_;
-                                                              // this way both doctors would have access to the list without
-                                                              // having to create two lists and any
-                                                              // time that the array of nurses needed to be changed it would
-                                                              // be this static array that is gettic changed.
+  * extra variables:
+
 
 };
 
+Class Clinic //
+{
+
+
+* minimum functions:
+- addNurse() // this function calls the constructor of nurse with all the necessary parameters. It
+// creates a new nurse and increments the number of nurses in the clinic.
+
+- delNurse(nurseObject) // it removes the object nurse and decrements the number of nurses in
+// the clinic. Removing an object from an array is done by displacing the items after it one
+// after the other tile the last object in the array. This function calls then the destructor of
+// nurse given as a parameter.
+
+- checkNurse(idNurse, hour, day, month, year, idNurse) // returns boolean to indicate if a nurse
+// has an appointment in the given time parameters.
+
+* minimum variables: Nurses (dynamic array or Vector), numberOfNurses,
+Doctors (an array of the two doctors) //This array of Docs is specifically for the checkNurse function.
+// so that it will have access to both doctors lists of appointments and can check through them.
+
+};
 
 
 Class LoadObjects // association with Person
 {                 // use polymorphism so it will have access to all child class data
 
 
-  * minimum functions: 
+  * minimum functions:
   -  loadData() //  First, we should open the file clinicData.txt. This
   // file should contain the following information:
   // nbNurses, Dr1Capacity, Dr1NbPatients, Dr2Capcity, Dr2NbPatients. For example, if we may have
@@ -134,20 +150,21 @@ Class LoadObjects // association with Person
   // and open every file and create the object with the parametrized constructor. The doctors’ data may
   // be retrieved in files called dr1.txt and dr2.txt. The parameters should obviously be extracted from
   // the file. Please remember to close all the files.
-  
-  * minimum variables:  
+
+  * minimum variables:
   * extra functions: (if necessary)
   * extra variables: (if necessary)
 };
+
 // Have option of combining these two into one class
-Class StoreObjects // association with Person 
+Class StoreObjects // association with Person
 {                  // use polymorphism so it will have access to all child class data
 
   // This class has access to the information in the other classes and stores every object in a separate file.
-  // The names of the files should follow the rules indicated above. 
+  // The names of the files should follow the rules indicated above.
 
-  * minimum functions: 
-  * minimum variables:  
+  * minimum functions:
+  * minimum variables:
   * extra functions: (if necessary)
   * extra variables: (if necessary)
 };
@@ -159,9 +176,9 @@ if (myfile.peek() == std::ifstream::traits_type::eof())
  cout << "file is empty"<< endl;
 //do your processing
  }
- 
-// To know that a file does not exist you may use: 
 
-if(myFile.fail()) 
+// To know that a file does not exist you may use:
+
+if(myFile.fail())
 or
-if(myFile.is_open.()) 
+if(myFile.is_open.())
