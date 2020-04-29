@@ -29,50 +29,50 @@ class className
     // other Variables:
 };
 
-    // constructors and destructor
-    Classname::Classname()
-    {
+// constructors and destructor
+Classname::Classname()
+{
     
-    }
-    Classname::Classname(var, var)
-    {
+}
+Classname::Classname(var, var)
+{
     
-    }
-    Classname::Classname(const Classname& orig)
-    {
+}
+Classname::Classname(const Classname& orig)
+{
     
-    }
-    Classname::~Classname()
-    {
+}
+Classname::~Classname()
+{
     
-    }
+}
     
-    // accessors:
-    int Classname::getVar()
-    {
+// accessors:
+int Classname::getVar()
+{
     
-    }
-    int Classname::getVar()
-    {
+}
+int Classname::getVar()
+{
     
-    }
+}
     
-    // settors/modifiers:
-    void Classname::setVar(varType)
-    {
+// settors/modifiers:
+void Classname::setVar(varType)
+{
     
-    }
-    void Classname::setVar(varType)
-    {
+}
+void Classname::setVar(varType)
+{
     
-    }
+}
     
-    // other functions:
-    void Classname::otherFunction01()
-    {
+// other functions:
+void Classname::otherFunction01()
+{
     
-    }
-    void Classname::otherFunction02()
-    {
-    
-    }
+}
+void Classname::otherFunction02()
+{
+   
+}
