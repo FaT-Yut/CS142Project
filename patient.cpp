@@ -4,11 +4,11 @@
 int Patient::totalPatients_ = 0;
 
 // constructors & destructor
-Patient::Patient() 
+Patient::Patient()
 {
-	fName_ = "Patient"; 
-	lName_ = "Doe"; 
-	stAddress_ = "No address on file"; 
+	fName_ = "Patient";
+	lName_ = "Doe";
+	stAddress_ = "No address on file";
 	zipcode_ = 12345;
 	city_ = "City";
 	dayBirth_ = 00;
@@ -16,7 +16,6 @@ Patient::Patient()
 	yearBirth_ = 00;
 	SSN_ = "0";
 	gender_ = 'N';
-	PrimaryPhysician_ = 0;
 	allergy_ = false;
 	prescriptions_ = 0;
 	numOfScripts_ = 0;
@@ -24,7 +23,7 @@ Patient::Patient()
 }
 // parameterized constructor used when creating a brand new patient
 Patient::Patient(std::string fName, std::string lName, std::string address, int zipCode, std::string city, int dayBirth,
-	int monthBirth, int yearBirth, std::string SSN, char gender, Doctor* PrimDr, bool allergy, std::string* scripts, int numOfScripts)
+	int monthBirth, int yearBirth, std::string SSN, char gender, bool allergy, std::string* scripts, int numOfScripts)
 {
 	fName_ = fName;
 	lName_ = lName;
@@ -36,15 +35,14 @@ Patient::Patient(std::string fName, std::string lName, std::string address, int 
 	yearBirth_ = yearBirth;
 	SSN_ = SSN;
 	gender_ = gender;
-	PrimaryPhysician_ = PrimDr;
 	allergy_ = allergy;
 	prescriptions_ = scripts;
 	numOfScripts_ = numOfScripts;
-	idPatient_ += totalPatients_; 
+	idPatient_ += totalPatients_;
 }
 // parameterized constructor used when reading a pre-existing Patient from a file that already has a patient ID
 Patient::Patient(std::string fName, std::string lName, std::string address, int zipCode, std::string city, int dayBirth,
-	int monthBirth, int yearBirth, std::string SSN, char gender, Doctor* PrimDr, bool allergy, std::string* scripts, int numOfScripts, int id)
+	int monthBirth, int yearBirth, std::string SSN, char gender, bool allergy, std::string* scripts, int numOfScripts, int id)
 {
 	fName_ = fName;
 	lName_ = lName;
@@ -56,7 +54,6 @@ Patient::Patient(std::string fName, std::string lName, std::string address, int 
 	yearBirth_ = yearBirth;
 	SSN_ = SSN;
 	gender_ = gender;
-	PrimaryPhysician_ = PrimDr;
 	allergy_ = allergy;
 	prescriptions_ = scripts;
 	numOfScripts_ = numOfScripts;
@@ -75,7 +72,6 @@ Patient::Patient(const Patient& Orig)
 	this->yearBirth_ = Orig.yearBirth_;
 	this->SSN_ = Orig.SSN_;
 	this->gender_ = Orig.gender_;
-	this->PrimaryPhysician_ = Orig.PrimaryPhysician_;
 	this->allergy_ = Orig.allergy_;
 	this->prescriptions_ = Orig.prescriptions_;
 	this->idPatient_ += totalPatients_;
@@ -83,7 +79,7 @@ Patient::Patient(const Patient& Orig)
 Patient::~Patient()
 {
 	// by default the patient is set to 0 scripts, but if they do have any then they were allocated and need to be deallocated
-	if (numOfScripts_ > 0) 
+	if (numOfScripts_ > 0)
 	{
 		delete[] prescriptions_;
 	}
@@ -93,10 +89,6 @@ Patient::~Patient()
 }
 
 // accessors
-Doctor* Patient::getDoctor() const
-{
-	return PrimaryPhysician_;
-}
 bool Patient::getAllergy() const
 {
 	return allergy_;
@@ -111,10 +103,6 @@ int Patient::getID() const
 }
 
 // setters
-void Patient::setDoctor(Doctor* Doc)
-{
-	PrimaryPhysician_ = Doc;
-}
 void Patient::setAllergy(bool allergy)
 {
 	allergy_ = allergy;
@@ -150,7 +138,6 @@ void Patient::printToDisplay() // prints variables to screen
 	std::cout << "Birth day: " << monthBirth_ << "/" << dayBirth_ << "/" << yearBirth_ << std::endl;
 	std::cout << "SSN: " << SSN_ << std::endl;
 	std::cout << "Gender: " << gender_ << std::endl;
-	std::cout << "Dr. " << PrimaryPhysician_->lName_ << std::endl;
 	std::cout << "Allergy: ";
 	if (allergy_)
 	{
@@ -164,10 +151,6 @@ void Patient::printToDisplay() // prints variables to screen
 	std::cout << "Number of scripts: " << numOfScripts_ << std::endl;
 	for (int i = 0; i < numOfScripts_; i++)
 	{
-		std::cout << "Prescription " << (i+1) << ":" << prescriptions_[i] << std::endl;
+		std::cout << "Prescription " << (i + 1) << ":" << prescriptions_[i] << std::endl;
 	}
 }
-
-
-
-
