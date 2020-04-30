@@ -17,6 +17,8 @@ public:
 
   void deleteAppointment(int idPatient, int hour,int day,int month,int year);
 
+  void cancelAppointment(int idPatient);
+
 private:
     int docID_;
     std::string specialty_;
