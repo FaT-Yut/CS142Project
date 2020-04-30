@@ -10,7 +10,7 @@ public:
     Doctor(std::string fName, std::string lName, std::string stAdress,
         int zip, std::string city, int dayBirth, int monthBirth, int yearBirth,
         std::string ssn, char gender, double salary, std::string specialty, std::string degree,
-        std::string medSchool, bool certified, Patient** pat, Appointment** app);
+        std::string medSchool, bool certified);
 
     void addPatient(Patient* pat);
 
