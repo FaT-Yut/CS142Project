@@ -223,7 +223,10 @@ Class LoadObjects // association with Person
 
   * minimum variables:
   * extra functions: (if necessary)
-  * extra variables: (if necessary)
+  * extra variables: (if necessary) /* (Nate) I think that we should save the highest static ID of all classes
+into the clinicData.txt file as well. That way when all the objects are loaded the static ID for all classes should be set to
+this stored value to ensure any new classes created after loading will not have overlapping ID's
+This means that the static IDs will need to have their own setters so that they can be manipulated upon loading.*/
 };
 
 // Have option of combining these two into one class
