@@ -8,8 +8,8 @@ public:
     Clinic();
     Clinic(Nurse**, Doctor**, int);
 
-    void addNurse(Nurse nurse);
-    void delNurse(Nurse);
+    void addNurse(Nurse* nurse);
+    void delNurse(Nurse*);
     bool checkNurse(int hour, int day, int month, int year, int idNurse);
 
 private:
