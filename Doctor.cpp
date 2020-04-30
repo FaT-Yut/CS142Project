@@ -145,3 +145,16 @@ Appointment** Doctor::getAppArray()
 {
     return appArray_;
 }
+
+
+void Doctor::showAppointments()
+{
+    for (int i = 0; i < nbApp_; i++)
+    {
+        if(appArray_[i]->year_ == 0)
+        std::cout << "Patient with ID Number " << appArray_[i]->patientID_ << " Has an appointment at " << appArray_[i]->hour_ << " O'clock "
+            << " In the month of " << appArray_[i]->month_ << " on the day of " << appArray_[i]->day_ << " in the year " << appArray_[i]->year_
+            << " with the Nurse with the ID number of " << appArray_[i]->nurseID_;
+
+    }
+}
