@@ -11,19 +11,19 @@ class className
     Classname(var, var);
     Classname(const Classname& orig)
     ~Classname();
-    
+
     // accessors:
-    int getVar();
-    int getVar();
-    
+    varType get();
+    varType get();
+
     // setters/modifiers:
-    void setVar(varType);
-    void setVar(varType);
-    
+    void set(varType);
+    void set(varType);
+
     // other functions:
     void otherFunction01();
     void otherFunction02();
-    
+
   Protected:
     // static Variable:
     // other Variables:
@@ -32,47 +32,47 @@ class className
 // constructors and destructor
 Classname::Classname()
 {
-    
+
 }
-Classname::Classname(var, var)
+Classname::Classname(varType, varType)
 {
-    
+
 }
 Classname::Classname(const Classname& orig)
 {
-    
+
 }
 Classname::~Classname()
 {
-    
+
 }
-    
+
 // accessors:
-int Classname::getVar()
+varType Classname::get()
 {
-    
+
 }
-int Classname::getVar()
+varType Classname::get()
 {
-    
+
 }
-    
+
 // settors/modifiers:
-void Classname::setVar(varType)
+void Classname::set(varType)
 {
-    
+
 }
-void Classname::setVar(varType)
+void Classname::set(varType)
 {
-    
+
 }
-    
+
 // other functions:
 void Classname::otherFunction01()
 {
-    
+
 }
 void Classname::otherFunction02()
 {
-   
+
 }

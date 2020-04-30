@@ -173,12 +173,9 @@ Class Doctor // child class of Employee
 
 
 
-  * minimum variables: idDoctor, speciality, degree, medicalSchool, boardCertified (bool), patients (dynamic array),
-    appointments (dynamic array).
+  * minimum variables: idDoctor, speciality, degree, medicalSchool, boardCertified (bool), patients (dynamic array).
   * extra functions: (if necessary)
-  * extra variables:
-
-
+  * extra variables: struct appointments* (struct array)
 };
 
 Class Clinic //
@@ -192,7 +189,7 @@ Class Clinic //
   // after the other tile the last object in the array. This function calls then the destructor of
   // nurse given as a parameter.
 
-  - checkNurse(idNurse, hour, day, month, year, idNurse) // returns boolean to indicate if a nurse
+  - checkNurse(idNurse, hour, day, month, year) // returns boolean to indicate if a nurse
   // has an appointment in the given time parameters.
 
   * minimum variables: Nurses (dynamic array or Vector), numberOfNurses,
