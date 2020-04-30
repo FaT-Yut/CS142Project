@@ -1,14 +1,16 @@
 #pragma once
 #include <string>
 
-// fName, lName, stAddress, zipCode, city, dayBirth, monthBirth, yearBirth, SSN, gender
+// fName, lName, stAddress, zipCode, city, dayBirth,
+// monthBirth, yearBirth, SSN, gender
 
 class Person
 {
 public:
 	// Constructors
 	Person();
-	Person(std::string, std::string, std::string, int, std::string, int, int, int, std::string, char);
+	Person(std::string, std::string, std::string, int, std::string, int, int, int,
+		std::string, char);
 	Person(const Person&);
 
 	// Accessors
