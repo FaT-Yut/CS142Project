@@ -73,47 +73,64 @@ void Doctor::addAppointment(int idPatient, int hour, int day, int month, int yea
 
 void Doctor::deleteAppointment(int idPatient, int hour, int day, int month, int year)
 {
-    int index = 0;
-    Appointment** temp = new Appointment* [(nbApp_ - 1)]; // create a temp array of pointers that will represent the size &
-                                                    // value that we are changing the array to
 
-    for (int i = 0; i < nbApp_; i++) // find the index of the app to be taken out of the array
+
+    for (int i = 0; i < nbApp_; i++) // find the index of the app to be replaced and replaces the variables
     {
-        if (appArray_[i]->hour_ == hour && appArray_[i]->day_ == day && appArray_[i]->month_ == month && appArray_[i]->year_ == year && appArray_[i]->patientID_ == idPatient)
+        if (appArray_[i]->patientID_ == idPatient)
         {
-            index = i;
+            appArray_[i]->hour_ = hour;
+            appArray_[i]->day_ = day;
+            appArray_[i]->month_ = month;
+            appArray_[i]->year_ = year;
         }
     }
 
-    // ensure that we aren't violating the space in memory that is one after the array
-    if (index != (nbApp_ - 1))
-    {
-        for (int i = 0; i < index; i++)
-        {
-            temp[i] = appArray_[i];
+}
 
-        }
-        for (index; index < nbApp_; index++)
-        {
-            if (index != (nbApp_ - 1))
-            {
-                temp[index] = appArray_[(index + 1)];
-            }
-        }
-    }
-    else
-    {
-        for (int i = 0; i < (nbApp_ - 1); i++)
-        {
-            temp[i] = appArray_[i];
-        }
-    }
-    delete[] appArray_;
-    nbApp_--;
-    appArray_ = new Appointment* [nbApp_];
-    for (int i = 0; i < nbApp_; i++)
-    {
-        appArray_[i] = temp[i];
-    }
-    delete[] temp;
+void cancelAppointment(int idPatient)
+{
+  int index = 0;
+  Appointment** temp = new Appointment* [(nbApp_ - 1)]; // create a temp array of pointers that will represent the size &
+                                                  // value that we are changing the array to
+
+  for (int i = 0; i < nbApp_; i++) // find the index of the app to be taken out of the array
+  {
+      if (appArray_[i]->hour_ == hour && appArray_[i]->day_ == day && appArray_[i]->month_ == month && appArray_[i]->year_ == year && appArray_[i]->patientID_ == idPatient)
+      {
+          index = i;
+      }
+  }
+
+  // ensure that we aren't violating the space in memory that is one after the array
+  if (index != (nbApp_ - 1))
+  {
+      for (int i = 0; i < index; i++)
+      {
+          temp[i] = appArray_[i];
+
+      }
+      for (index; index < nbApp_; index++)
+      {
+          if (index != (nbApp_ - 1))
+          {
+              temp[index] = appArray_[(index + 1)];
+          }
+      }
+  }
+  else
+  {
+      for (int i = 0; i < (nbApp_ - 1); i++)
+      {
+          temp[i] = appArray_[i];
+      }
+  }
+  delete[] appArray_;
+  nbApp_--;
+  appArray_ = new Appointment* [nbApp_];
+  for (int i = 0; i < nbApp_; i++)
+  {
+      appArray_[i] = temp[i];
+  }
+  delete[] temp;
 }
