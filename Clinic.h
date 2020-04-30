@@ -9,8 +9,8 @@ public:
     Clinic(Nurse**, Doctor**, int, int);
     ~Clinic();
 
-    void addNurse(Nurse*);
-    void delNurse(Nurse*);
+    void addNurse();
+    void delNurse(int);
     bool checkNurse(int hour, int day, int month, int year, int idNurse);
 
 private:
