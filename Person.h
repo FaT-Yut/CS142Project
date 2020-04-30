@@ -13,30 +13,6 @@ public:
 		std::string, char);
 	Person(const Person&);
 
-	// Accessors
-	std::string getFName();
-	std::string getLName();
-	std::string getAddress();
-	int getZipCode();
-	std::string getCity();
-	int getDayBirth();
-	int getMonthBirth();
-	int getYearBirth();
-	std::string getSSN();
-	char getGender();
-
-	// Manipulators
-	void setFName(std::string);
-	void setLName(std::string);
-	void setAddress(std::string);
-	void setZipCode(int);
-	void setCity(std::string);
-	void setDayBirth(int);
-	void setMonthBirth(int);
-	void setYearBirth(int);
-	void setSSN(std::string);
-	void setGender(char);
-
 protected:
 	std::string fName_;
 	std::string lName_;
