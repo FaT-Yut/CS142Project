@@ -9,7 +9,7 @@ class className
     // constructors and destructor
     Classname();
     Classname(var, var);
-    Classname(const Classname& orig)
+    Classname(const Classname& orig);
     ~Classname();
 
     // accessors:
