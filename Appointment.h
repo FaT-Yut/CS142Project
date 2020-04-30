@@ -2,10 +2,10 @@
 
 struct Appointment
 {
-  int hour_;
-  int day_;
-  int month_;
-  int year_;
-  int patientID_;
-  int nurseID_;
+  int hour_ = 0;
+  int day_ = 0;
+  int month_ = 0;
+  int year_ = 0;
+  int patientID_ = 0;
+  int nurseID_ = 0;
 };
