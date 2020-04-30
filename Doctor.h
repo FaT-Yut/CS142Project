@@ -7,9 +7,10 @@ class Doctor : public Employee
 {
 public:
     Doctor();
-    Doctor(std::string first, std::string last, std::string address, int zip, std::string city, int day, int month, int year, int ssn, char gend, double salary, int docID, std::string specialty, std::string degree, std::string medSchool, bool certified, Patient* pat, Appointment* app);
-
-
+    Doctor(std::string, std::string, std::string, int, std::string, int, int,
+      int, int, char, double, int, std::string, std::string, std::string, bool,
+       Patient*, Appointment*);
+      
 private:
     int docID_;
     std::string specialty_;
@@ -19,5 +20,4 @@ private:
     Patient* patArray_;
     Appointment* appArray_;
     static int counter;
-
 };

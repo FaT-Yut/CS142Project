@@ -1,64 +1,35 @@
 #include "Patient.h"
+#include <iostream>
 
 // static variable
 int Patient::totalPatients_ = 0;
 
 // constructors & destructor
-Patient::Patient()
+Patient::Patient() : Person("John", "Doe", "N/A", 0, "N/A", 0, 0, 0, "N/A", 'X'),
+allergy_(false), prescriptions_(0), numOfScripts_(0),
 {
-	fName_ = "Patient";
-	lName_ = "Doe";
-	stAddress_ = "No address on file";
-	zipcode_ = 12345;
-	city_ = "City";
-	dayBirth_ = 00;
-	monthBirth_ = 00;
-	yearBirth_ = 00;
-	SSN_ = "0";
-	gender_ = 'N';
-	allergy_ = false;
-	prescriptions_ = 0;
-	numOfScripts_ = 0;
 	idPatient_ += totalPatients_;
 }
+
 // parameterized constructor used when creating a brand new patient
-Patient::Patient(std::string fName, std::string lName, std::string address, int zipCode, std::string city, int dayBirth,
-	int monthBirth, int yearBirth, std::string SSN, char gender, bool allergy, std::string* scripts, int numOfScripts)
+Patient::Patient(std::string fName, std::string lName, std::string stAddress,
+	int zipCode, std::string city, int dayBirth, int monthBirth, int yearBirth,
+	std::string SSN, char gender, bool allergy, std::string* scripts, int numOfScripts)
+	: Person(fName, lName, stAdress, zipCode, city, dayBirth, monthBirth,
+		yearBirth, SSN, gender), allergy_(allergy), numOfScripts_(numOfScripts),
+		prescriptions_(scripts)
 {
-	fName_ = fName;
-	lName_ = lName;
-	stAddress_ = address;
-	zipcode_ = zipCode;
-	city_ = city;
-	dayBirth_ = dayBirth;
-	monthBirth_ = monthBirth;
-	yearBirth_ = yearBirth;
-	SSN_ = SSN;
-	gender_ = gender;
-	allergy_ = allergy;
-	prescriptions_ = scripts;
-	numOfScripts_ = numOfScripts;
 	idPatient_ += totalPatients_;
 }
+
 // parameterized constructor used when reading a pre-existing Patient from a file that already has a patient ID
-Patient::Patient(std::string fName, std::string lName, std::string address, int zipCode, std::string city, int dayBirth,
-	int monthBirth, int yearBirth, std::string SSN, char gender, bool allergy, std::string* scripts, int numOfScripts, int id)
-{
-	fName_ = fName;
-	lName_ = lName;
-	stAddress_ = address;
-	zipcode_ = zipCode;
-	city_ = city;
-	dayBirth_ = dayBirth;
-	monthBirth_ = monthBirth;
-	yearBirth_ = yearBirth;
-	SSN_ = SSN;
-	gender_ = gender;
-	allergy_ = allergy;
-	prescriptions_ = scripts;
-	numOfScripts_ = numOfScripts;
-	idPatient_ = id;
-}
+Patient::Patient(std::string fName, std::string lName, std::string address,
+	int zipCode, std::string city, int dayBirth,	int monthBirth, int yearBirth,
+	std::string SSN, char gender, bool allergy, std::string* scripts,
+	int numOfScripts, int id)
+	: Person(fName, lName, stAdress, zipCode, city, dayBirth, monthBirth,
+		yearBirth, SSN, gender), allergy_(allergy), numOfScripts_(numOfScripts),
+		prescriptions_(scripts), idPatient_(id) {}
 
 Patient::Patient(const Patient& Orig)
 {
@@ -76,6 +47,7 @@ Patient::Patient(const Patient& Orig)
 	this->prescriptions_ = Orig.prescriptions_;
 	this->idPatient_ += totalPatients_;
 }
+
 Patient::~Patient()
 {
 	// by default the patient is set to 0 scripts, but if they do have any then they were allocated and need to be deallocated
@@ -93,10 +65,12 @@ bool Patient::getAllergy() const
 {
 	return allergy_;
 }
+
 std::string* Patient::getScripts() const
 {
 	return prescriptions_;
 }
+
 int Patient::getID() const
 {
 	return idPatient_;
@@ -107,6 +81,7 @@ void Patient::setAllergy(bool allergy)
 {
 	allergy_ = allergy;
 }
+
 void Patient::setScripts(std::string* scripts, int numScripts)
 {
 	prescriptions_ = scripts;
@@ -129,7 +104,7 @@ void Patient::getScripts() // gets data input directly from the user
 
 void Patient::printToDisplay() // prints variables to screen
 {
-	std::cout << "Patient ID# " << idPatient_ << std::endl;
+	std::cout << "Patient ID: # " << idPatient_ << std::endl;
 	std::cout << "First name: " << fName_ << std::endl;
 	std::cout << "Last name: " << lName_ << std::endl;
 	std::cout << "Street Address: " << stAddress_ << std::endl;
@@ -146,11 +121,10 @@ void Patient::printToDisplay() // prints variables to screen
 	else
 	{
 		std::cout << "No" << std::endl;
-
 	}
 	std::cout << "Number of scripts: " << numOfScripts_ << std::endl;
 	for (int i = 0; i < numOfScripts_; i++)
 	{
-		std::cout << "Prescription " << (i + 1) << ":" << prescriptions_[i] << std::endl;
+		std::cout << "Prescription: " << (i + 1) << ":" << prescriptions_[i] << std::endl;
 	}
 }
