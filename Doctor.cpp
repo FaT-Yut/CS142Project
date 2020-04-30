@@ -1,6 +1,6 @@
 #include "Doctor.h"
 
-int Doctor::counter = 0
+int Doctor::counter = 0;
 
 Doctor::Doctor()
 {
