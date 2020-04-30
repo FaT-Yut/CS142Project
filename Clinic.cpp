@@ -1,10 +1,9 @@
 #include "Clinc.h"
 
-Clinic::Clinic(): arNurses_(0), arDoctors_(0), nbNurses_(0), totalNBNurses_(0) {}
+Clinic::Clinic(): arNurses_(0), arDoctors_(0), nbNurses_(0) {}
 
-Clinic::Clinic(Nurses** nurses, Doctor** doctors, int nbNurses, int totalNurses):
-arNurses_(nurses), arDoctors_(doctors), nbNurses_(nbNurses), totalNBNurses_(totalNurses)
-{}
+Clinic::Clinic(Nurses** nurses, Doctor** doctors, int nbNurses):
+arNurses_(nurses), arDoctors_(doctors), nbNurses_(nbNurses) {}
 
 void Clinic::addNurse(Nurse nurse)
 {

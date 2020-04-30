@@ -6,7 +6,7 @@ class Clinic
 {
 public:
     Clinic();
-    Clinic(Nurse**, Doctor**, int, int);
+    Clinic(Nurse**, Doctor**, int);
 
     void addNurse(Nurse nurse);
     void delNurse(Nurse);
@@ -14,7 +14,6 @@ public:
 
 private:
     int nursesInAR_;
-    int totalNBNurses_;
     Nurse** arNurses_;
     Doctor** arDoctors_;
 };
