@@ -41,21 +41,41 @@ void Doctor::addPatient(Patient* pat)
 }
 
 
-void Doctor::addAppointment(int idPatient, int hour, int day, int month, int year, int idNurse)
+void Doctor::addAppointment()
 {
+
+  Appointment* tempApp;
+  
+  int userHour,userDay,userMonth,userYear,userPatID,userNurseID;
+
+  std::cout << "What is the Patients ID? " <<std::endl;
+  std::cin >> userPatID;
+  std::cout << "What is the desired year of the appointment? " <<std::endl;
+  std::cin >> userYear;
+  std::cout << "What is the month of the APpointment " <<std::endl;
+  std::cin >> userMonth;
+  std::cout << "What is the day of the appointment? " <<std::endl;
+  std::cin >> userDay;
+  std::cout << "What is the hour of the appointment (excluding 12-1pm)? " <<std::endl;
+  std::cin >> userHour;
+  std::cout << "What is the ID of the nurse requested? " <<std::endl;
+  std::cin >> userNurseID;
+
+
+  tempApp->hour_ = userHour;
+  tempApp->day_ = userDay;
+  tempApp->month_ = userMonth;
+  tempApp->year_ = userYear;
+  tempApp->patientID_ = userPatID;
+  tempApp->nurseID_ = userNurseID;
+
     nbApp_++; // increment the total number of vehicles by one since adding a new vehicle
     Appointment** temp = new Appointment * [nbApp_]; // create a temp array of pointers that will represent the value that we are changing the array to
     for (int i = 0; i < (nbApp_ - 1); i++) // put in old values into new array up to the last spot
     {
         temp[i] = appArray_[i];
     }
-    Appointment* tempApp;
-    tempApp->hour_ = hour;
-    tempApp->day_ = day;
-    tempApp->month_ = month;
-    tempApp->year_ = year;
-    tempApp->patientID_ = idPatient;
-    tempApp->nurseID_ = idNurse;
+
 
     temp[(nbApp_ - 1)] = tempApp; // fill the last spot with the new vehicle being added
 

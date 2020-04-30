@@ -15,7 +15,7 @@ public:
 
     void addPatient(Patient* pat);
 
-    void addAppointment(int idPatient, int hour, int day, int month, int year, int idNurse);
+    void addAppointment();
 
     void deleteAppointment(int idPatient, int hour, int day, int month, int year);
 
