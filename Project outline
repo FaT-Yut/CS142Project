@@ -1,28 +1,104 @@
-
 Medical Clinic Management Program
+
+
+
+void Accounting::addNewCar(Vehicle* newCar)
+{
+	numVeh_++; // increment the total number of vehicles by one since adding a new vehicle
+	Vehicle** temp = new Vehicle*[numVeh_]; // create a temp array of pointers that will represent the value that we are changing the array to
+	for (int i = 0; i < (numVeh_ - 1); i++) // put in old values into new array up to the last spot
+	{
+		temp[i] = availableVehicles_[i];
+	}
+	temp[(numVeh_ - 1)] = newCar; // fill the last spot with the new vehicle being added
+
+	delete[] availableVehicles_; // deallocate the old arrary held within Vehicle** availableVehicles_
+
+	availableVehicles_ = new Vehicle* [numVeh_]; // allocate the new memory needed to hold the slightly bigger array
+	for (int i = 0; i < numVeh_; i++) // fill new memory allocated with the correct value stored in temp
+	{
+		availableVehicles_[i] = temp[i];
+	}
+
+	delete[] temp; // deallocate temp
+}
+// car sold
+void Accounting::sellCar(int idOfCarSold)
+{
+	int index = 0;
+	Vehicle** temp = new Vehicle * [(numVeh_ - 1)]; // create a temp array of pointers that will represent the size &
+													// value that we are changing the array to
+
+	for (int i = 0; i < numVeh_; i++) // find the index of the car to be taken out of the array
+	{
+		if (availableVehicles_[i]->getId() == idOfCarSold)
+		{
+			index = i;
+		}
+	}
+
+	// ensure that we aren't violating the space in memory that is one after the array
+	if (index != (numVeh_ - 1))
+	{
+		for (int i = 0; i < index; i++)
+		{
+			temp[i] = availableVehicles_[i];
+
+		}
+		for (index; index < numVeh_; index++)
+		{
+			if (index != (numVeh_ - 1))
+			{
+				temp[index] = availableVehicles_[(index + 1)];
+			}
+		}
+	}
+	else // if the the car that is sold is in the last spot in the array I will just shift all values over one spot to the left
+	{
+		for (int i = 0; i < (numVeh_-1); i++)
+		{
+			temp[i] = availableVehicles_[i];
+		}
+	}
+	delete[] availableVehicles_;
+	numVeh_--; // de-increment the total number of vehicles by one since subtracting a new vehicle
+	availableVehicles_ = new Vehicle * [numVeh_]; // allocate the new memory needed to hold the slightly smaller array
+	for (int i = 0; i < numVeh_; i++)
+	{
+		availableVehicles_[i] = temp[i];
+	}
+	delete[] temp;
+}
+
+
+
+
+
+
+
+
+
 
 GOAL: Develop a basic information system for a small clinic
 
 Main:
 int main()
 {
-2 doctors, unknown number of nurses and patients.
-Doc01 is Joanne Healthy
-Doc02 is Johnny Hefty
+  2 doctors, unknown number of nurses and patients.
+  Doc01 is Joanne Healthy
+  Doc02 is Johnny Hefty
 
-Starts with two options displayed
-1. Create a new clinic (using the default constructors)
-2. Load existing data and modify (parameterized constructors and ifstream/ofstream of data from a text file)
-  // If 2. is selected and the file is empty or if it does not exist, that means that we should build the clinic from scratch.
-  // use the peak function at the bottom of this to check if it's empty.
+  Starts with two options displayed
+  1. Create a new clinic (using the default constructors)
+  2. Load existing data and modify (parameterized constructors and ifstream/ofstream of data from a text file)
+    // If 2. is selected and the file is empty or if it does not exist, that means that we should build the clinic from scratch.
+    // use the peak function at the bottom of this to check if it's empty.
 
-*user interface shows what all the program can do
--option for adding and deleting Patients and Nurses
--options that show off scheduling features
--options to save and load data
--maybe an option to display all upcoming appointments
-
-
+  *user interface shows what all the program can do
+  -option for adding and deleting Patients and Nurses
+  -options that show off scheduling features
+  -options to save and load data
+  -maybe an option to display all upcoming appointments
 }
 
 Class Person // Parent class
@@ -107,24 +183,21 @@ Class Doctor // child class of Employee
 
 Class Clinic //
 {
+  * minimum functions:
+  - addNurse() // this function calls the constructor of nurse with all the necessary parameters. It
+  // creates a new nurse and increments the number of nurses in the clinic.
 
+  - delNurse(nurseObject) // it removes the object nurse and decrements the number of nurses in
+  // the clinic. Removing an object from an array is done by displacing the items after it one
+  // after the other tile the last object in the array. This function calls then the destructor of
+  // nurse given as a parameter.
 
-* minimum functions:
-- addNurse() // this function calls the constructor of nurse with all the necessary parameters. It
-// creates a new nurse and increments the number of nurses in the clinic.
+  - checkNurse(idNurse, hour, day, month, year, idNurse) // returns boolean to indicate if a nurse
+  // has an appointment in the given time parameters.
 
-- delNurse(nurseObject) // it removes the object nurse and decrements the number of nurses in
-// the clinic. Removing an object from an array is done by displacing the items after it one
-// after the other tile the last object in the array. This function calls then the destructor of
-// nurse given as a parameter.
-
-- checkNurse(idNurse, hour, day, month, year, idNurse) // returns boolean to indicate if a nurse
-// has an appointment in the given time parameters.
-
-* minimum variables: Nurses (dynamic array or Vector), numberOfNurses,
-Doctors (an array of the two doctors) //This array of Docs is specifically for the checkNurse function.
-// so that it will have access to both doctors lists of appointments and can check through them.
-
+  * minimum variables: Nurses (dynamic array or Vector), numberOfNurses,
+  Doctors (an array of the two doctors) //This array of Docs is specifically for the checkNurse function.
+  // so that it will have access to both doctors lists of appointments and can check through them.
 };
 
 
