@@ -12,20 +12,18 @@ public:
 	// constructors & destructor:
 	Patient();
 	// parameterized constructor used when creating a brand new patient
-	Patient(std::string, std::string, std::string, int, std::string, int, int, int, std::string, char, Doctor*, bool, std::string*, int);
+	Patient(std::string, std::string, std::string, int, std::string, int, int, int, std::string, char, bool, std::string*, int);
 	// parameterized constructor used when reading a pre-existing Patient from a file that already has a patient ID
-	Patient(std::string, std::string, std::string, int, std::string, int, int, int, std::string, char, Doctor*, bool, std::string*, int, int);  
+	Patient(std::string, std::string, std::string, int, std::string, int, int, int, std::string, char, bool, std::string*, int, int);
 	Patient(const Patient&);
 	~Patient();
 
 	// accessors:
-	Doctor* getDoctor() const;
 	bool getAllergy() const;
 	std::string* getScripts() const;
 	int getID() const;
 
 	// setters:
-	void setDoctor(Doctor* Doc);
 	void setAllergy(bool);
 	void setScripts(std::string*, int);
 
@@ -34,7 +32,6 @@ public:
 	void printToDisplay(); // prints variables to screen
 
 private:
-	Doctor* PrimaryPhysician_;
 	bool allergy_;
 	std::string* prescriptions_;
 	int numOfScripts_;
@@ -42,4 +39,3 @@ private:
 	// static variable
 	static int totalPatients_;
 };
-

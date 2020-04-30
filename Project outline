@@ -119,7 +119,7 @@ Class Patient // child class of Person
   * minimum functions:
   * minimum variables: idPatient, allergy (bool), prescriptions (array of strings).
   * extra functions: (if necessary)
-  * extra variables: number of prescriptions, Doctor*
+  * extra variables: number of prescriptions,
 };
 
 Class Employee // child class of Person
