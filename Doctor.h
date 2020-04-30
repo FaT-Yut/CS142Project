@@ -27,6 +27,8 @@ public:
 
     void showAppointments();
 
+    ~Doctor();
+
 
 private:
     int docID_;
