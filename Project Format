@@ -24,7 +24,7 @@ class className
     void otherFunction01();
     void otherFunction02();
 
-  Protected:
+  protected:
     // static Variable:
     // other Variables:
 };
