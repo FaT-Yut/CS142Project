@@ -5,68 +5,29 @@
 
 int main()
 {
-  std::string fName = "Joane";
-  std::string lName = "Healthy";
-  std::string stAdress = "1714 Mullen Dr";
-  int zip = 70810;
-  std::string city = "Baton Rouge";
-  int dayBirth = 10;
-  int monthBirth = 11;
-  int yearBirth = 1975;
-  std::string ssn = "677673454";
-  char gender = 'M';
-  double salary = 110000;
-  std::string specialty = "Pediatrist";
-  std::string degree = "M.D";
-  std::string medSchool = "Duke University";
-  bool certified = true;
-
-  Doctor d1(fName, lName, stAdress, zip, city, dayBirth, monthBirth,
-  yearBirth, ssn, gender, salary, specialty, degree, medSchool, certified);
-
-  fName = "Johnny";
-  lName = "Hefty";
-  stAdress = "1501 Lakeside Drive";
-  zip = 24551;
-  city = "Lynchburg";
-  dayBirth = 10;
-  monthBirth = 12;
-  yearBirth = 1985;
-  ssn = "665543454";
-  gender = 'F';
-  salary = 110009;
-  specialty = "Oncologist";
-  degree = "M.D";
-  medSchool = "John Hopkins";
-  certified = true;
-
-  Doctor d2(fName, lName, stAdress, zip, city, dayBirth, monthBirth,
-  yearBirth, ssn, gender, salary, specialty, degree, medSchool, certified);
   const int NUM_DOCS = 2;
-  Doctor* ptr1 = &d1;
-  Doctor* ptr2 = &d2;
-  Doctor** clinicDoctors = new Doctor*[NUM_DOCS]{ptr1, ptr2};
-
-
-  Nurse jR("Jakie", "Robinson", "123 NoOneCares Blvd", 1234, "BoomTown",
-  4, 21, 1998, "345674321", 'F', 35000, "Oncology Nurse", true );
-  Nurse hA("Hugh", "Anus", "Your Momma's Box", 69696, "Dad's Balls",
-  4, 21, 1998, "5346767", 'F', 35000, "Throat Specialist", true );
-  Nurse iW("Icy", "Weigner", "The Strip Clubs cum collection bin", 4312, "Pen Island",
-  5, 20, 1978, "5413456", 'M', 35000, "Anal Professional", true );
-  Nurse jH("Jackme", "Hough", "Right hand is better than left St", 1234, "Scrotem",
-  8, 5, 1995, "8761345", 'M', 35000, "Testicular Cancer", true );
-
   const int NUM_NURSES = 4;
-  Nurse* nPtr1 = &jR;
-  Nurse* nPtr2 = &hA;
-  Nurse* nPtr3 = &iW;
-  Nurse* nPtr4 = &jH;
 
-  Nurse** nurseArray = new Nurse*[NUM_NURSES]{nPtr1,nPtr2,nPtr3,nPtr4};
+  Doctor d1("Joane", "Healthy", "1714 Mullen Dr", 12345, "Baton Rouge", 10, 11,
+  1975, "221-80-9871", 'M', 90000, "Pediatrist", "M.D", "Duke University", true);
+  Doctor d2("Johnny", "Hefty", "1501 Lakeside Drive", 24501, "Lynchburg", 10, 12,
+  1985, "220-79-9715", 'F', 90000, "Oncologist", "M.D", "John Hopkins", true);
 
-  Clinic clinic(nurseArray, clinicDoctors, NUM_NURSES);
-  
+  Nurse n1("Ashley", "Wright", "333 College St", 24501, "Lynchburg",
+  4, 21, 1998, "234-80-1871", 'F', 35000, "Pediatrics", true);
+  Nurse n2("Brooke", "Powers", "341 College St", 24501, "Lynchburg",
+  11, 14, 1997, "245-75-9861", 'F', 35000, "Unit Care", true)
+  Nurse n3("Chad", "Wheeler", "329 College St", 24501, "Lynchburg",
+  5, 20, 1996, "211-45-9161", 'M', 35000, "Elder Care", true);
+
+  Doctor* dPt1 = &d1, dPt2 = &d2;
+  Nurse* nPt1 = &n1, nPt2 = &n2, nPt3 = &n3;
+
+  Doctor** clinicDoctors = new Doctor*[NUM_DOCS]{dPt1, dPt2};
+  Nurse** nurseArray = new Nurse*[NUM_NURSES]{nPt1,nPt2,nPt3};
+
+  Clinic clinic(nurseArray, clinicDoctors, NUM_NURSES, NUM_DOCS);
+
 
 
 
