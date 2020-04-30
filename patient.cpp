@@ -6,7 +6,7 @@ int Patient::totalPatients_ = 0;
 
 // constructors & destructor
 Patient::Patient() : Person("John", "Doe", "N/A", 0, "N/A", 0, 0, 0, "N/A", 'X'),
-allergy_(false), prescriptions_(0), numOfScripts_(0),
+allergy_(false), prescriptions_(0), numOfScripts_(0)
 {
 	idPatient_ += totalPatients_;
 }
@@ -15,21 +15,21 @@ allergy_(false), prescriptions_(0), numOfScripts_(0),
 Patient::Patient(std::string fName, std::string lName, std::string stAddress,
 	int zipCode, std::string city, int dayBirth, int monthBirth, int yearBirth,
 	std::string SSN, char gender, bool allergy, std::string* scripts, int numOfScripts)
-	: Person(fName, lName, stAdress, zipCode, city, dayBirth, monthBirth,
+	: Person(fName, lName, stAddress, zipCode, city, dayBirth, monthBirth,
 		yearBirth, SSN, gender), allergy_(allergy), numOfScripts_(numOfScripts),
-		prescriptions_(scripts)
+	prescriptions_(scripts)
 {
 	idPatient_ += totalPatients_;
 }
 
 // parameterized constructor used when reading a pre-existing Patient from a file that already has a patient ID
-Patient::Patient(std::string fName, std::string lName, std::string address,
-	int zipCode, std::string city, int dayBirth,	int monthBirth, int yearBirth,
+Patient::Patient(std::string fName, std::string lName, std::string stAddress,
+	int zipCode, std::string city, int dayBirth, int monthBirth, int yearBirth,
 	std::string SSN, char gender, bool allergy, std::string* scripts,
 	int numOfScripts, int id)
-	: Person(fName, lName, stAdress, zipCode, city, dayBirth, monthBirth,
+	: Person(fName, lName, stAddress, zipCode, city, dayBirth, monthBirth,
 		yearBirth, SSN, gender), allergy_(allergy), numOfScripts_(numOfScripts),
-		prescriptions_(scripts), idPatient_(id) {}
+	prescriptions_(scripts), idPatient_(id) {}
 
 Patient::Patient(const Patient& Orig)
 {

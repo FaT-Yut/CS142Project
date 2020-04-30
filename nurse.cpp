@@ -5,7 +5,7 @@ int Nurse::nurseIDs_ = 0;
 
 // constructors and destructor
 Nurse::Nurse() : Employee("John", "Doe", "N/A", 0, "N/A", 0, 0, 0, "N/A", 'M',
- 0), specialty_("N/A"), practitioner_(false)
+    0), specialty_("N/A"), practitioner_(false)
 {
     nurseIDs_++;
     idNurse_ = nurseIDs_; // consider idNurse_ = ++nurseIDs_; ??
@@ -13,10 +13,10 @@ Nurse::Nurse() : Employee("John", "Doe", "N/A", 0, "N/A", 0, 0, 0, "N/A", 'M',
 
 // standard parameterized constructor that autogenerates a nurse ID
 Nurse::Nurse(std::string fName, std::string lName, std::string stAdress, int zip,
-  std::string city, int dbirth, int mbirth, int yBirth, std::string ssn,
-  char gen, double salary, std::string specialty, bool practitioner) :
-  Employee(fName, lName, stAdress, zip, city, dbirth, mbirth, yBirth, ssn, gen,
-    salary), specialty_(specialty), pracitioner_(pracitioner)
+    std::string city, int dbirth, int mbirth, int yBirth, std::string ssn,
+    char gen, double salary, std::string specialty, bool practitioner) :
+    Employee(fName, lName, stAdress, zip, city, dbirth, mbirth, yBirth, ssn, gen,
+        salary), specialty_(specialty), practitioner_(practitioner)
 {
     nurseIDs_++;
     idNurse_ = nurseIDs_; // consider idNurse_ = ++nurseIDs_; ??
@@ -25,10 +25,10 @@ Nurse::Nurse(std::string fName, std::string lName, std::string stAdress, int zip
 // parameterized constructor to use when the nurse ID is already
 // known such as when reading from a file
 Nurse::Nurse(std::string fName, std::string lName, std::string stAdress, int zip,
-  std::string city, int dbirth, int mbirth, int yBirth, std::string ssn,
-  char gen, double salary, std::string specialty, bool practitioner, int id) :
-  Employee(fName, lName, stAdress, zip, city, dbirth, mbirth, yBirth, ssn, gen,
-    salary), specialty_(specialty), pracitioner_(pracitioner), idNurse_(id)
+    std::string city, int dbirth, int mbirth, int yBirth, std::string ssn,
+    char gen, double salary, std::string specialty, bool practitioner, int id) :
+    Employee(fName, lName, stAdress, zip, city, dbirth, mbirth, yBirth, ssn, gen,
+        salary), specialty_(specialty), practitioner_(practitioner), idNurse_(id)
 {
     nurseIDs_++;
 }

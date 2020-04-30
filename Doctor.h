@@ -7,17 +7,22 @@ class Doctor : public Employee
 {
 public:
     Doctor();
-    Doctor(std::string, std::string, std::string, int, std::string, int, int,
-      int, int, char, double, int, std::string, std::string, std::string, bool,
-       Patient*, Appointment*);
+    Doctor(std::string fName, std::string lName, std::string stAdress,
+        int zip, std::string city, int dayBirth, int monthBirth, int yearBirth,
+        std::string ssn, char gender, double salary, std::string specialty, std::string degree,
+        std::string medSchool, bool certified, Patient** pat, Appointment** app);
 
-  void addPatient(Patient* pat);
+    void addPatient(Patient* pat);
 
-  void addAppointment(int idPatient, int hour, int day, int month, int year, int idNurse);
+    void addAppointment(int idPatient, int hour, int day, int month, int year, int idNurse);
 
-  void deleteAppointment(int idPatient, int hour,int day,int month,int year);
+    void deleteAppointment(int idPatient, int hour, int day, int month, int year);
 
-  void cancelAppointment(int idPatient);
+    void cancelAppointment(int idPatient);
+
+    int getAppNumber();
+
+    Appointment** getAppArray();
 
 private:
     int docID_;
@@ -25,8 +30,8 @@ private:
     std::string degree_;
     std::string medSchool_;
     bool certified_;
-    Patient* patArray_;
-    Appointment* appArray_;
+    Patient** patArray_;
+    Appointment** appArray_;
     static int counter;
     int nbApp_;
     int nbPatients_;

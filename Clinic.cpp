@@ -1,32 +1,32 @@
 #include "Clinic.h"
 
-Clinic::Clinic() : arNurses_(0), arDoctors_(0), nbNurses_(0), totalNBNurses_(0) {}
+Clinic::Clinic() : arNurses_(0), arDoctors_(0), nursesInAR_(0), totalNBNurses_(0) {}
 
 Clinic::Clinic(Nurse** nurses, Doctor** doctors, int nbNurses, int totalNurses) :
-    arNurses_(nurses), arDoctors_(doctors), nbNurses_(nbNurses), totalNBNurses_(totalNurses)
+    arNurses_(nurses), arDoctors_(doctors), nursesInAR_(nbNurses), totalNBNurses_(totalNurses)
 {}
 
-void Clinic::addNurse(Nurse nurse)
+void Clinic::addNurse(Nurse* nurse)
 {
-    Nurse* ptr = &nurse;
+    Nurse* ptr = nurse;
     // Places the nurse in the next avaiable spot and then moves the
     // pointer to the next spot
-    arNurses_[nbNurses_++] = ptr;
+    arNurses_[nursesInAR_++] = ptr;
 }
 
-void Clinic::delNurse(Nurse nurse)
+void Clinic::delNurse(Nurse* nurse)
 {
-    for (int i = 0; i < nbNurses_; i++)
+    for (int i = 0; i < nursesInAR_; i++)
     {
         // Finds the nurse object in the array and
         // deletes the object
-        if (arNurses_[i] == nurse)
+        if (arNurses_[i]->getID() == nurse->getID())
         {
-            delete arNurses_[i];
+            delete[] arNurses_[i];
 
             // Keeps size of the array, but moves each Nurse up
             // in the array so that a new Nurse can be added
-            for (j = i; j < (nbNurses_ - 1); j++)
+            for (int j = i; j < (nursesInAR_ - 1); j++)
             {
                 arNurses_[j] = arNurses_[j + 1];
             }
@@ -34,21 +34,21 @@ void Clinic::delNurse(Nurse nurse)
     }
 }
 
-bool Clinc::checkNurse(int hour, int day, int month, int year, int idNurse)
+bool Clinic::checkNurse(int hour, int day, int month, int year, int idNurse)
 {
     bool booked = false;
     int nbDocs = 2;
 
     for (int i = 0; i < nbDocs; i++)
     {
-        if (arDoctors_[i].getAppointment().day == day &&
-            arDoctors_[i].getAppointment().month == month &&
-            arDoctors_[i].getAppointment().year == year &&
-            arDoctors_[i].getAppointment().hour == hour &&
-            arDoctors_[i].getAppointment().nurseID == idNurse)
+       Appointment** appArray = arDoctors_[i]->getAppArray();
+        for (int j = 0; j < arDoctors_[i]->getAppNumber(); j++)
         {
-            // Check nurse avaiablility
-            booked = true;
+            if (appArray[j]->hour_ == hour&& appArray[j]->day_ == day && appArray[j]->month_ == month &&
+                appArray[j]->year_ == year && appArray[j]->nurseID_ == idNurse)
+            {
+                booked = true;
+            }
         }
     }
 
