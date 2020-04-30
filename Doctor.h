@@ -2,6 +2,7 @@
 #include "Employee.h"
 #include "Patient.h"
 #include "Appointment.h"
+#include <iostream>
 
 class Doctor : public Employee
 {
@@ -23,6 +24,9 @@ public:
     int getAppNumber();
 
     Appointment** getAppArray();
+
+    void showAppointments();
+
 
 private:
     int docID_;
