@@ -44,30 +44,30 @@ void Doctor::addPatient(Patient* pat)
 void Doctor::addAppointment()
 {
 
-  Appointment* tempApp;
-  
-  int userHour,userDay,userMonth,userYear,userPatID,userNurseID;
+    Appointment* tempApp{};
 
-  std::cout << "What is the Patients ID? " <<std::endl;
-  std::cin >> userPatID;
-  std::cout << "What is the desired year of the appointment? " <<std::endl;
-  std::cin >> userYear;
-  std::cout << "What is the month of the APpointment " <<std::endl;
-  std::cin >> userMonth;
-  std::cout << "What is the day of the appointment? " <<std::endl;
-  std::cin >> userDay;
-  std::cout << "What is the hour of the appointment (excluding 12-1pm)? " <<std::endl;
-  std::cin >> userHour;
-  std::cout << "What is the ID of the nurse requested? " <<std::endl;
-  std::cin >> userNurseID;
+    int userHour, userDay, userMonth, userYear, userPatID, userNurseID;
+
+    std::cout << "What is the Patients ID? " << std::endl;
+    std::cin >> userPatID;
+    std::cout << "What is the desired year of the appointment? " << std::endl;
+    std::cin >> userYear;
+    std::cout << "What is the month of the APpointment " << std::endl;
+    std::cin >> userMonth;
+    std::cout << "What is the day of the appointment? " << std::endl;
+    std::cin >> userDay;
+    std::cout << "What is the hour of the appointment (excluding 12-1pm)? " << std::endl;
+    std::cin >> userHour;
+    std::cout << "What is the ID of the nurse requested? " << std::endl;
+    std::cin >> userNurseID;
 
 
-  tempApp->hour_ = userHour;
-  tempApp->day_ = userDay;
-  tempApp->month_ = userMonth;
-  tempApp->year_ = userYear;
-  tempApp->patientID_ = userPatID;
-  tempApp->nurseID_ = userNurseID;
+    tempApp->hour_ = userHour;
+    tempApp->day_ = userDay;
+    tempApp->month_ = userMonth;
+    tempApp->year_ = userYear;
+    tempApp->patientID_ = userPatID;
+    tempApp->nurseID_ = userNurseID;
 
     nbApp_++; // increment the total number of vehicles by one since adding a new vehicle
     Appointment** temp = new Appointment * [nbApp_]; // create a temp array of pointers that will represent the value that we are changing the array to
@@ -171,15 +171,15 @@ void Doctor::showAppointments()
 {
     for (int i = 0; i < nbApp_; i++)
     {
-        if(appArray_[i]->year_ != 0)
+        if (appArray_[i]->year_ != 0)
         {
-        std::cout << "Patient with ID Number " << appArray_[i]->patientID_ << " Has an appointment at " << appArray_[i]->hour_ << " O'clock "
-            << " In the month of " << appArray_[i]->month_ << " on the day of " << appArray_[i]->day_ << " in the year " << appArray_[i]->year_
-            << " with the Nurse with the ID number of " << appArray_[i]->nurseID_ << std::endl;
+            std::cout << "Patient with ID Number " << appArray_[i]->patientID_ << " Has an appointment at " << appArray_[i]->hour_ << " O'clock "
+                << " In the month of " << appArray_[i]->month_ << " on the day of " << appArray_[i]->day_ << " in the year " << appArray_[i]->year_
+                << " with the Nurse with the ID number of " << appArray_[i]->nurseID_ << std::endl;
         }
         else
         {
-          std::cout << "No Appointments scheduled" << std::endl;
+            std::cout << "No Appointments scheduled" << std::endl;
         }
     }
 }
@@ -187,7 +187,7 @@ void Doctor::showAppointments()
 
 Doctor::~Doctor()
 {
-  delete[] appArray_[nbApp_];
-  delete[] patArray_[nbPatients_];
+    delete[] appArray_[nbApp_];
+    delete[] patArray_[nbPatients_];
 
 }
