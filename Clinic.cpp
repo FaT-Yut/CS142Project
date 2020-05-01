@@ -12,7 +12,7 @@ Clinic::~Clinic()
     {
         for (int i = 0; i < nursesInAR_; i++)
         {
-            delete[] arNurses_[i];
+            delete arNurses_[i];
         }
     }
 
@@ -20,7 +20,7 @@ Clinic::~Clinic()
     {
         for (int i = 0; i < nbDocs_; i++)
         {
-            delete[] arDoctors_[i];
+            delete arDoctors_[i];
         }
     }
 
@@ -57,8 +57,8 @@ void Clinic::addNurse()
     std::cout << "SSN of the nurse?" << std::endl;
     std::string SSN;
     std::cin >> SSN;
-    std::cout << "Gender of the nurse?" << std::endl;
-    std::string gender;
+    std::cout << "Gender of the nurse? (enter one letter)" << std::endl;
+    char gender;
     std::cin >> gender;
     std::cout << "Salary of the nurse?" << std::endl;
     int salary;
@@ -83,8 +83,8 @@ void Clinic::addNurse()
     std::cin >> nurseID;
 
     Nurse nurse(fName, lName, address, zipCode, city, dBirth, mBirth, yBirth,
-        SSN, gender, salary, speciality, pract, nurseID);
-        Nurse* ptr = &nurse;
+        SSN, gender, salary, speciality, pract);
+    Nurse* ptr = &nurse;
 
     arNurses_[nursesInAR_++] = ptr;
 }

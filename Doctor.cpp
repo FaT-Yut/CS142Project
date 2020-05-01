@@ -187,7 +187,16 @@ void Doctor::showAppointments()
 
 Doctor::~Doctor()
 {
-    delete[] appArray_[nbApp_];
-    delete[] patArray_[nbPatients_];
+    for (int i = 0; i < nbApp_; i++)
+    {
+        delete appArray_[i];
+    }
+    for (int i = 0; i < nbPatients_; i++)
+    {
+        delete patArray_[nbPatients_];
+    }
+
+    appArray_ = NULL;
+    patArray_ = NULL;
 
 }
